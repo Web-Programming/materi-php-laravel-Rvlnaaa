@@ -18,8 +18,12 @@ class MateriController extends Controller
         return view('materi.about');
     }
 
-    public function materi() {
+    public function Materi() {
         return view('materi.materi');
+    }
+
+    public function prodi() {
+        return view('materi.prodi');
     }
 }
     
