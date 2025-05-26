@@ -1,8 +1,8 @@
 
 @extends('layout.master')
-@section('title', 'Data Program Studi')
-@section('page-title', 'Daftar prodi')
-@section('breadcrumb', 'Prodi')
+
+@section('title', 'Hapus Materi ')
+
 @section('content')
 <!DOCTYPE html>
     <html lang="en">

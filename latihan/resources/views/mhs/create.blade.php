@@ -1,50 +1,34 @@
-@extends('layouts.master')
+@extends('layout.master')
 
 @section('content')
-<section class="content">
-  <div class="container-fluid">
-    <div class="card card-primary">
-      <div class="card-header">
-        <h3 class="card-title">Tambah Mahasiswa</h3>
-      </div>
-      <form method="POST" action="{{ route('mahasiswa.store') }}">
+<div class="container mt-4">
+    <h3>Tambah Mahasiswa</h3>
+    <form action="{{ route('mhs.store') }}" method="POST">
         @csrf
-        <div class="card-body">
-          <div class="form-group">
-            <label>NPM</label>
-            <input type="text" name="npm" class="form-control" required>
-          </div>
-          <div class="form-group">
-            <label>Nama</label>
+        <div class="mb-3">
+            <label for="nama" class="form-label">Nama Mahasiswa</label>
             <input type="text" name="nama" class="form-control" required>
-          </div>
-          <div class="form-group">
-            <label>Prodi</label>
-            <select name="prodi_id" class="form-control" required>
-              @foreach($prodi as $item)
-                <option value="{{ $item->id }}">{{ $item->nama }}</option>
-              @endforeach
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Fakultas</label>
-            <select name="fakultas_id" class="form-control" required>
-              @foreach($fakultas as $item)
-                <option value="{{ $item->id }}">{{ $item->nama }}</option>
-              @endforeach
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Alamat</label>
-            <textarea name="alamat" class="form-control"></textarea>
-          </div>
         </div>
-        <div class="card-footer">
-          <button type="submit" class="btn btn-primary">Simpan</button>
-          <a href="{{ route('mahasiswa.index') }}" class="btn btn-secondary">Batal</a>
+
+        <div class="mb-3">
+            <label for="nim" class="form-label">NIM</label>
+            <input type="text" name="nim" class="form-control" required>
         </div>
-      </form>
-    </div>
-  </div>
-</section>
-@endsection 
+
+        <div class="mb-3">
+            <label for="prodi" class="form-label">Program Studi</label>
+            <select name="prodi" class="form-control" required>
+                <option value="Informatika">Informatika</option>
+                <option value="Sistem Informasi">Sistem Informasi</option>
+                <option value="Manajemen">Manajemen</option>
+                <option value="Akuntansi">Akuntansi</option>
+                <option value="Manajemen Informatika">Manajemen Informatika</option>
+                <option value="Teknik Elektro">Teknik Elektro</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Simpan</button>
+        <a href="{{ route('mhs.index') }}" class="btn btn-secondary">Kembali</a>
+    </form>
+</div>
+@endsection
