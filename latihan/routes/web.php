@@ -6,6 +6,9 @@ use App\Http\Controllers\DosenController;
 use App\Http\Controllers\ProdiController;
 use App\Http\Controllers\MateriController;
 use App\Http\Controllers\FakultasController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 
 // ===================
 // Route: Mahasiswa
@@ -53,7 +56,17 @@ Route::get('/materi/{id}/detail', [MateriController::class, 'detail'])->name('ma
 Route::post('/materi/{id}/destroy', [MateriController::class, 'destroy'])->name('materi.destroy');
 
 // ===================
-// Route Home / Redirect
+// Auth Routes
+// ===================
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login']);
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('/register', [RegisterController::class, 'register']);
+
+// ===================
+// Default Redirect
 // ===================
 Route::get('/', function () {
     return redirect()->route('mhs.index');

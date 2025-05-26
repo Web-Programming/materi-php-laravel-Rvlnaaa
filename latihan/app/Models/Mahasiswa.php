@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Mahasiswa extends Model
 {
+    protected $table = "mahasiswa";
 
-    protected $fillable = ['nama', 'nim', 'prodi', 'fakultas'];
+    public function prodi(){
+        return $this->belongTo(Prodi::class);
+    }
 }
-
