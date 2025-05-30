@@ -12,10 +12,9 @@ class FakultasController extends Controller
      */
     public function index()
     {
-        $listfakultas = Fakultas::all(); //select * from fakultas;
-        return view("fakultas.index", 
-            ['listfakultas' => $listfakultas]
-        );
+        $fakultas = Fakultas::all(); // Ambil semua data dari model Fakultas
+
+    return view('fakultas.index', compact('fakultas'));
     }
 
     /**

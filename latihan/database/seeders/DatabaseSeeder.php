@@ -17,26 +17,35 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // Insert data user
-       DB::table('users')->insert([
+        // Insert 1 random user
+        DB::table('users')->insert([
             'name' => Str::random(10),
             'email' => Str::random(10).'@example.com',
             'password' => Hash::make('password'),
+            'level' => 'admin' // tambahkan jika ada field 'level'
         ]);
 
-        //insert data mahasiswa menggunakan query builder
-        DB::table('mahasiswa') ->insert(
-            [
-                'npm' => '2420250046',
-                'nama' =>'Nur Rachmat',
-                'tempat_lahir' => 'Paris',
-                'alamat' => 'Palembang',
-                'created_at' => date("y-m-d H:i:s")
-            ]
-        );
+        // Insert mahasiswa
+        DB::table('mahasiswa')->insert([
+            'npm' => '2420250046',
+            'nama' => 'Nur Rachmat',
+            'tempat_lahir' => 'Paris',
+            'alamat' => 'Palembang',
+            'created_at' => now(),
+        ]);
 
-        DB::table('mahasiswa')
-        ->where("npm", "2428250066")
-        ->where(["npm" => "2428250066"]);
+        // Insert fakultas
+        DB::table('fakultas')->insert([
+            [
+                'nama' => 'Fakultas Ilmu Komputer dan Rekayasa',
+                'deskripsi' => 'Berfokus pada pengembangan teknologi informasi dan rekayasa sistem.',
+                'gambar' => 'https://images.unsplash.com/photo-1581092334186-d40d8c8d4c54',
+            ],
+            [
+                'nama' => 'Fakultas Ekonomi dan Bisnis',
+                'deskripsi' => 'Mengembangkan ilmu ekonomi dan manajemen bisnis modern.',
+                'gambar' => 'https://images.unsplash.com/photo-1508385082359-fc4f89b7c59d',
+            ],
+        ]);
     }
 }

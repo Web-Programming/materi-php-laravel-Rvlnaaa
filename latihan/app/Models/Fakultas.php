@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Fakultas extends Model
 {
     protected $table = 'fakultas';
-    //protected $fill
+
+    protected $fillable = [
+        'nama',       // nama fakultas
+        'deskripsi',  // deskripsi fakultas
+        'gambar'      // nama file gambar fakultas
+    ];
 }
